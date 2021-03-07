@@ -37,8 +37,8 @@ class WordStatIndexTest extends AnyFunSuite {
   test("random 10, 3, 5 ru") {
     assert(testInput(randomText(10, 3, 5, ru)))
   }
-  test("random 100, 1000, 1000 all") {
-    assert(testInput(randomText(100, 1000, 1000, ru ++ en ++ symbols)))
+  test("random 100, 1000, 100 all") {
+    assert(testInput(randomText(100, 1000, 100, ru ++ en ++ symbols)))
   }
 
   def testInput(input: String): Boolean =
