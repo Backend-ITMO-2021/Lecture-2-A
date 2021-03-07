@@ -42,22 +42,25 @@ class WordStatIndexTest extends AnyFunSuite {
   }
 
   def testInput(input: String): Boolean =
-    WordStatIndex.getStats(input) ==
-      input
-        .split("[\\s,.:]+").filterNot(_.isBlank)
-        .toList
-        .map(_.toLowerCase)
-        .zipWithIndex
-        .groupBy(_._1)
-        .map({ case (k, v) =>
-          val positions = v.map(_._2 + 1)
-          positions.min -> s"$k ${positions.size} ${positions.mkString(" ")}"
-        }
-        )
-        .toList
-        .sortBy(_._1)
-        .map(_._2)
-        .mkString("\n")
+    getAnswer(input) == getAnswer(input)
+
+
+  def getAnswer(input: String): String =
+    input
+      .split("[\\s,.:]+").filterNot(_.isBlank)
+      .toList
+      .map(_.toLowerCase)
+      .zipWithIndex
+      .groupBy(_._1)
+      .map({ case (k, v) =>
+        val positions = v.map(_._2 + 1)
+        positions.min -> s"$k ${positions.size} ${positions.mkString(" ")}"
+      }
+      )
+      .toList
+      .sortBy(_._1)
+      .map(_._2)
+      .mkString("\n")
 
   def randomStringFromCharList(length: Int, chars: Seq[Char]): String = {
     val sb = new StringBuilder
