@@ -44,7 +44,7 @@ class WordStatIndexTest extends AnyFunSuite {
   def testInput(input: String): Boolean =
     WordStatIndex.getStats(input) ==
       input
-        .split("[\r\n ,.:]+").filterNot(_.isBlank)
+        .split("[\\s,.:]+").filterNot(_.isBlank)
         .toList
         .map(_.toLowerCase)
         .zipWithIndex
