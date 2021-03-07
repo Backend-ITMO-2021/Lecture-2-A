@@ -1,10 +1,8 @@
 package ru.ifmo.backend_2021;
 
-import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class WordStatIndex {
 
@@ -15,7 +13,7 @@ public class WordStatIndex {
     public static String getStats(String input) {
         String[] punctuationFreeInput = input.split("[\\s,.:]+");
 
-        Map<String, List<Integer>> wordsCounter = new LinkedHashMap<>();
+        Map<String, IntList> wordsCounter = new LinkedHashMap<>();
 
         for (int i = 0; i < punctuationFreeInput.length; i++) {
             String word = punctuationFreeInput[i].toLowerCase();

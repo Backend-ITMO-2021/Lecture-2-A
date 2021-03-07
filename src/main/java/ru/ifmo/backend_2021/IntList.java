@@ -1,126 +1,74 @@
 package ru.ifmo.backend_2021;
 
 import java.util.*;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
-public class IntList implements List<Integer> {
-    List<Integer> innerList;
+public class IntList implements Iterable<Integer> {
+    private Integer[] elements;
+    private int size;
+    private static final int DEFAULT_CAPACITY = 10;
 
-    public IntList(){
-        innerList = new ArrayList<>();
+    public IntList() {
+        this.elements = new Integer[DEFAULT_CAPACITY];
     }
 
-    @Override
-    public int size() {
-        return innerList.size();
+    public boolean add(Integer integer) {
+        if (this.size == this.elements.length) {
+            this.elements = this.grow();
+        }
+
+        elements[this.size] = integer;
+        this.size++;
+        return true;
     }
 
-    @Override
-    public boolean isEmpty() {
-        return innerList.isEmpty();
+    public Integer get(int index) {
+        Objects.checkIndex(index, this.size);
+        return this.elements[index];
     }
 
-    @Override
-    public boolean contains(Object o) {
-        return innerList.contains(o);
+    private Integer[] grow() {
+        return Arrays.copyOf(this.elements, this.newCapacity(this.size + 1));
     }
+
+    private int newCapacity(int minCapacity) {
+        return minCapacity * 2;
+    }
+
+    public int size(){
+        return this.size;
+    }
+
+    public Spliterator<Integer> spliterator() {
+        return Spliterators.spliterator(iterator(), this.size, 0);
+    }
+
+    public Stream<Integer> stream() {
+        return StreamSupport.stream(this.spliterator(), false);
+    }
+
 
     @Override
     public Iterator<Integer> iterator() {
-        return innerList.iterator();
+        return new IntIterator();
     }
 
-    @Override
-    public Object[] toArray() {
-        return innerList.toArray();
+    private class IntIterator implements Iterator<Integer> {
+
+        private int cursor;
+
+        @Override
+        public boolean hasNext() {
+            return cursor < IntList.this.size;
+        }
+
+        @Override
+        public Integer next() {
+            Integer value = IntList.this.get(cursor);
+            cursor++;
+            return value;
+        }
     }
 
-    @Override
-    public <T> T[] toArray(T[] ts) {
-        return innerList.toArray(ts);
-    }
-
-    @Override
-    public boolean add(Integer integer) {
-        return innerList.add(integer);
-    }
-
-    @Override
-    public boolean remove(Object o) {
-        return innerList.remove(o);
-    }
-
-    @Override
-    public boolean containsAll(Collection<?> collection) {
-        return innerList.containsAll(collection);
-    }
-
-    @Override
-    public boolean addAll(Collection<? extends Integer> collection) {
-        return innerList.addAll(collection);
-    }
-
-    @Override
-    public boolean addAll(int i, Collection<? extends Integer> collection) {
-        return false;
-    }
-
-    @Override
-    public boolean removeAll(Collection<?> collection) {
-        return innerList.removeAll(collection);
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> collection) {
-        return innerList.retainAll(collection);
-    }
-
-    @Override
-    public void clear() {
-        innerList.clear();
-    }
-
-    @Override
-    public Integer get(int i) {
-        return innerList.get(i);
-    }
-
-    @Override
-    public Integer set(int i, Integer integer) {
-        return innerList.set(i, integer);
-    }
-
-    @Override
-    public void add(int i, Integer integer) {
-        innerList.add(i, integer);
-    }
-
-    @Override
-    public Integer remove(int i) {
-        return innerList.remove(i);
-    }
-
-    @Override
-    public int indexOf(Object o) {
-        return innerList.indexOf(o);
-    }
-
-    @Override
-    public int lastIndexOf(Object o) {
-        return innerList.lastIndexOf(o);
-    }
-
-    @Override
-    public ListIterator<Integer> listIterator() {
-        return innerList.listIterator();
-    }
-
-    @Override
-    public ListIterator<Integer> listIterator(int i) {
-        return innerList.listIterator(i);
-    }
-
-    @Override
-    public List<Integer> subList(int i, int i1) {
-        return innerList.subList(i, i1);
-    }
 }
