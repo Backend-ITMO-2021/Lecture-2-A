@@ -15,13 +15,13 @@ public class WordStatIndex {
                 continue;
             }
 
-            if (!lastWord.isEmpty()) {
+            if (lastWord.length() > 0) {
                 words.add(lastWord.toString());
                 lastWord.setLength(0);
             }
         }
 
-        if (!lastWord.isEmpty()) {
+        if (lastWord.length() > 0) {
             words.add(lastWord.toString());
         }
 
