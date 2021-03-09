@@ -1,6 +1,8 @@
 import org.scalatest.funsuite.AnyFunSuite
 import ru.ifmo.backend_2021.WordStatIndex
 
+import scala.util.matching.Regex
+
 class WordStatIndexTest extends AnyFunSuite {
   test("Yorick") {
     assert(testInput(
@@ -37,14 +39,17 @@ class WordStatIndexTest extends AnyFunSuite {
   test("random 10, 3, 5 ru") {
     assert(testInput(randomText(10, 3, 5, ru)))
   }
-  test("random 100, 1000, 1000 all") {
-    assert(testInput(randomText(100, 1000, 1000, ru ++ en ++ symbols)))
+  test("random 100, 1000, 100 all") {
+    assert(testInput(randomText(100, 1000, 100, ru ++ en ++ symbols)))
   }
+
+  lazy val wordRegex: Regex = "[\\p{L}\\-']+".r
 
   def testInput(input: String): Boolean =
     WordStatIndex.getStats(input) ==
-      input
-        .split("[\\s,.:]+").filterNot(_.isBlank)
+      wordRegex
+        .findAllIn(input)
+        .filterNot(_.isBlank)
         .toList
         .map(_.toLowerCase)
         .zipWithIndex
@@ -73,7 +78,7 @@ class WordStatIndexTest extends AnyFunSuite {
   }
 
   lazy val delimiters: Seq[Char] = ',' :: ';' :: '"' :: '{' :: '|' :: Nil
-  lazy val ru: Seq[Char] = ('а' to 'я') ++ ('A' to 'Я')
+  lazy val ru: Seq[Char] = ('а' to 'я') ++ ('А' to 'Я')
   lazy val en: Seq[Char] = ('a' to 'z') ++ ('A' to 'Z')
   lazy val symbols: Seq[Char] = '-' :: '\'' :: Nil
 
