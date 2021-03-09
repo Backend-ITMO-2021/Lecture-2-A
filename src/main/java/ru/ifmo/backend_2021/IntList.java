@@ -72,14 +72,7 @@ public class IntList implements Iterable<Integer> {
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder();
-
-        forEach(x -> result.append(x).append(' '));
-
-        result.setLength(result.length() - 1);
-        return result.toString();
-
-//        return StreamSupport.stream(spliterator(), false).map(Object::toString)
-//                .collect(Collectors.joining(" "));
+        return StreamSupport.stream(spliterator(), false).map(Object::toString)
+                .collect(Collectors.joining(" "));
     }
 }

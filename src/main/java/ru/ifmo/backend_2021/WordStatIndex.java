@@ -21,12 +21,15 @@ public class WordStatIndex {
             }
         }
 
+        if (!lastWord.isEmpty()) {
+            words.add(lastWord.toString());
+        }
+
         return words;
     }
 
 
-    public static String getStatss(String input) {
-        System.out.println(input.substring(0, 15));
+    public static String getStats(String input) {
 
         final Map<String, IntList> counter = new LinkedHashMap<>();
         int index = 1;
@@ -35,26 +38,8 @@ public class WordStatIndex {
             counter.computeIfAbsent(str, k -> new IntList()).insert(index);
             index++;
         }
-
-        System.out.println(index);
-
-        StringBuilder result = new StringBuilder();
-        counter.forEach((k, v) -> result.append(k).append(' ').append(v).append('\n'));
-
-        result.setLength(result.length() - 1);
-        return result.toString();
-//        return counter.entrySet().parallelStream()
-//                .map(entry -> entry.getKey() + " " + entry.getValue())
-//                .collect(Collectors.joining("\n"));
-    }
-
-    public static String getStats(String input) {
-        return new f().testInput(input);
-    }
-
-
-    public static void main(String[] args) {
-        var a = getStats("To be, or not to be, that\n is the question:");
-        System.out.print(a);
+        return counter.entrySet().parallelStream()
+                .map(entry -> entry.getKey() + " " + entry.getValue())
+                .collect(Collectors.joining("\n"));
     }
 }
