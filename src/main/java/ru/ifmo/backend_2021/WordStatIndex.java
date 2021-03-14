@@ -13,7 +13,7 @@ public class WordStatIndex {
 
 
     public static String getStats(String input) {
-        String[] text = input.split("[\\s,.:]+");
+        String[] text = input.replaceAll("[^'a-zA-Zа-яА-Я0-9- \n]", " ").toLowerCase().split("\\s+");
 
         Map<String, IntList> wordsCounter = new LinkedHashMap<>();
 
