@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 
 public class WordStatIndex {
   public static String getStats(String input) {
-    String[] words = input.toLowerCase().replaceAll("[^a-zA-Zа-яА-Я'\s-]+", " ").split("\s+");
+    String[] words = input.toLowerCase().replaceAll("[^a-zA-Zа-яА-Я'\\s-]+", " ").split("\\s+");
     LinkedHashMap<String, IntList> dict = new LinkedHashMap<String, IntList>();
     StringBuilder output = new StringBuilder();
 
