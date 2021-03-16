@@ -1,6 +1,6 @@
 package ru.ifmo.backend_2021;
 
-import java.util.LinkedHashMap;
+import java.util.*;
 
 public class WordStatIndex {
   public static String getStats(String input) {
