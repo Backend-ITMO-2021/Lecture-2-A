@@ -27,6 +27,9 @@ class WordStatIndexTest extends AnyFunSuite {
     )
     )
   }
+  test("Repeated") {
+    assert(testInput("I will not waste chalk.\n" * 1000))
+  }
   test("random 10, 3, 5 en") {
     assert(testInput(randomText(10, 3, 5, en)))
   }
