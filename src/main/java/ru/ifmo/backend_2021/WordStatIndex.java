@@ -26,7 +26,7 @@ public class WordStatIndex {
         StringBuilder output = new StringBuilder();
 
         statistic.forEach((key, positions) -> {
-            
+
             output.append(String.format("%s %d", key, positions.size()));
             for (Integer pos : positions) {
                 output.append(String.format(" %d", pos));
@@ -35,5 +35,4 @@ public class WordStatIndex {
         });
         return output.toString().trim();
     }
-}
 }
