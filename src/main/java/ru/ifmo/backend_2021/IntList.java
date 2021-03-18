@@ -7,7 +7,7 @@ public class IntList implements  {
     private int count;
     private IntList arr;
 
-    public WordStatIntList(int value, int lastLine) {
+    public void WordStatIntList(int value, int lastLine) {
         arr = new IntList(value);
         this.lastLine = lastLine;
         this.count = 1;
