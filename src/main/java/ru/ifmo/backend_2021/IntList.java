@@ -1,14 +1,13 @@
 package ru.ifmo.backend_2021;
 
-import java.util.*;
+import java.util.Iterator;
 
 public class IntList implements Iterable<Integer> {
-    private int lastLine;
-    private int count;
-    private int iCapacity = 16;
-    private float maxO;
-    private float iFactor;
+    private final int iCapacity = 16;
+    private final float maxO = 0.75f;
+    private final float iFactor = 1.5f;
     private int capacity = iCapacity;
+    private int lastIndex = 0;
     private Integer[] list = new Integer[iCapacity];
     private int size = 0;
 
@@ -16,16 +15,19 @@ public class IntList implements Iterable<Integer> {
         return new Iterator<>() {
             private int index = 0;
             public boolean hasNext() {
+
                 return index != lastIndex;
             }
 
             public Integer next() {
+
                 return list[++index];
             }
         };
     }
 
     public int size() {
+
         return size;
     }
 
