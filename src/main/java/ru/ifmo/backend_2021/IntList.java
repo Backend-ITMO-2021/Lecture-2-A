@@ -5,30 +5,28 @@ import java.util.*;
 class IntList implements Iterable<Integer> {
     private Integer[] list;
     private int size;
+    public static final int DEFAULT_CAPACITY = 100;
 
     public IntList() {
-        this.list = new Integer[50];
+        this(DEFAULT_CAPACITY);
     }
 
-    public boolean add(Integer value) {
-        if (this.list.length == this.size) {
-            Integer[] copyList;
-            copyList = this.list;
-            this.list = new Integer[this.size*2];
-            this.list = copyList;
-        }
+    public IntList(int capacity) {
+        if (capacity < 0)
+            throw new IllegalArgumentException("negative capacity");
+        list = new Integer[capacity];
+        size = 0;
+    }
+
+    public void add(Integer value) {
+        ensureCapacity(this.size + 1);
         list[this.size] = value;
         this.size++;
-        return true;
-    }
-
-    public int get(int index) {
-        return this.list[index];
     }
 
 
     public int getSize() {
-        return this.size;
+        return size;
     }
 
     public String getPos() {
@@ -39,6 +37,18 @@ class IntList implements Iterable<Integer> {
             }
         }
         return result;
+    }
+
+    public void ensureCapacity(int capacity) {
+        if (capacity > list.length) {
+            int newCapacity = list.length * 2 + 1;
+            if (capacity > newCapacity)
+                newCapacity = capacity;
+            Integer[] newListCap = new Integer[newCapacity];
+            for (int i = 0; i < size; i++)
+                newListCap[i] = list[i];
+            list = newListCap;
+        }
     }
 
 
@@ -53,13 +63,12 @@ class IntList implements Iterable<Integer> {
 
         @Override
         public boolean hasNext() {
-            return current < IntList.this.size;
+            return current != size;
         }
 
         @Override
         public Integer next() {
-            current++;
-            return IntList.this.get(current-1);
+            return list[++current];
         }
     }
 
