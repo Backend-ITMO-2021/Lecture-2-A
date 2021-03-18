@@ -5,7 +5,7 @@ import java.util.*;
 public class WordStatIndex {
     private static final String symbols = "[^a-zA-Zа-яА-Я\\-'\n ]";
 
-    public static getStats(String input) {
+    public static String getStats(String input) {
         section("Class LinkedHashMap");
 
         final Map<String, IntList> statistic = new Map<>();
