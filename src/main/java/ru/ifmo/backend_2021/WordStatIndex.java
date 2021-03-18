@@ -24,7 +24,7 @@ public class WordStatIndex {
                 statistic.put(word, intList);
             }
         }
-        StringBuilder output = new StringBuilder(int capacity);
+        StringBuilder output = new StringBuilder();
         statistic.forEach((key, positions) -> {
             output.append(String.format("%s %d", key, positions.size()));
             for (Integer pos : positions) {

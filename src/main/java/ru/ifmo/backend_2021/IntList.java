@@ -1,36 +1,46 @@
 package ru.ifmo.backend_2021;
 
-import java.util.Iterator;
+import java.util.*;
 
-public class IntList implements  {
+public class IntList implements Iterable<Integer> {
     private int lastLine;
     private int count;
-    private IntList arr;
+    private int iCapacity = 16;
+    private float maxO;
+    private float iFactor;
+    private int capacity = iCapacity;
+    private Integer[] list = new Integer[iCapacity];
+    private int size = 0;
 
-    public void WordStatIntList(int value, int lastLine) {
-        arr = new IntList(value);
-        this.lastLine = lastLine;
-        this.count = 1;
-    }
-
-    public void add(int position, int lineNum) {
-        count++;
-        if (lastLine != lineNum) {
-            arr.add(position);
-            lastLine = lineNum;
-        }
-    }
-
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-        result.append(count).append(' ');
-        for (int i = 0; i < arr.getSize(); i++) {
-            result.append(arr.get(i));
-            if (i + 1 != arr.getSize()) {
-                result.append(' ');
+    public Iterator<Integer> iterator() {
+        return new Iterator<>() {
+            private int index = 0;
+            public boolean hasNext() {
+                return index != lastIndex;
             }
-        }
-        return result.toString();
+
+            public Integer next() {
+                return list[++index];
+            }
+        };
     }
 
+    public int size() {
+        return size;
+    }
+
+    public void add(int value){
+        if (size >= capacity * maxO){
+            capacity *= iFactor;
+            Integer[] oldList = list;
+            list = new Integer[capacity];
+            System.arraycopy(oldList, 0, list, 0, oldList.length);
+        }
+        list[++lastIndex] = value;
+        size++;
+    }
+
+    public Integer getLast(){
+        return list[lastIndex];
+    }
 }
