@@ -1,29 +1,34 @@
 package ru.ifmo.backend_2021;
-
-import java.util.Arrays;
+import java.util.*;
 
 public class WordStatIndex {
   public static String getStats(String input) {
-    String str = input.toLowerCase();
-    str = str.replaceAll("[,.:;()?!]", "");
-    String[] subStr;
-    String delimeter = " ";
-    subStr = str.split(delimeter);
-    String[] uq = Arrays.stream(subStr).distinct().toArray(String[]::new);
-    String result = "";
-    for (String i: uq) {
-      int count = 0;
-      String pos = "";
-      for (int j=0; j<subStr.length;j++){
-        if (i.equals(subStr[j])){
-          count ++;
-          pos += String.format("%s ", j+1);
+      Map<String, IntList> wordsMap = new LinkedHashMap<>();
+      Map<Integer, String> indexToWords = new LinkedHashMap<>();
+      String[] subStr = input.replaceAll("[^a-zA-Zа-яА-Я\\-'\n ]", " ").toLowerCase().split("\\s+");
+      String result = "";
+      int countWord = 1;
+      int countPos = 1;
+      for (String i: subStr) {
+          if (wordsMap.containsKey(i)) {
+              wordsMap.get(i).add(countPos);
+          }
+          else {
+              IntList intList = new IntList();
+              intList.add(countPos);
+              wordsMap.put(i, intList);
+              indexToWords.put(countWord, i);
+              countWord++;
+          }
+          countPos++;
         }
+
+      for (int i=1; i< indexToWords.size(); i++) {
+          result +=  String.format("%s %s%s\n", indexToWords.get(i), wordsMap.get(indexToWords.get(i)).getSize(), wordsMap.get(indexToWords.get(i)).getPos());
       }
-      result +=  String.format("%s %s %s \n", i, count, pos);
+      result +=  String.format("%s %s%s", indexToWords.get(indexToWords.size()), wordsMap.get(indexToWords.get(indexToWords.size())).getSize(), wordsMap.get(indexToWords.get(indexToWords.size())).getPos());
 
-    }
 
-    return result;
+      return result;
   }
 }
