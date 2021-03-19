@@ -1,38 +1,38 @@
 package ru.ifmo.backend_2021;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class WordStatIndex {
-    private static final String PROHIBITED_SYMBOLS = "[^a-zA-Zа-яА-Я\\-'\n ]";
 
     public static String getStats(String input) {
-        final LinkedHashMap<String, IntList> statistic = new LinkedHashMap<>();
+        String[] words = input.toLowerCase().replaceAll("[^a-zа-я'-]", " ").split("\\s+");
 
-        String[] words = input.replaceAll(PROHIBITED_SYMBOLS, " ").toLowerCase().split("\\s+");
+        Map<String, IntList> wordsStats = new LinkedHashMap<>();
 
-        for (int i = 0; i < words.length; i++) {
-
-            String word = words[i];
-            if (statistic.containsKey(word)) {
-
-                statistic.get(word).add(i + 1);
-            } else {
-
-                IntList intList = new IntList();
-                intList.add(i + 1);
-                statistic.put(word, intList);
+        for (int i = 0; i < words.length; ++i) {
+            if (!wordsStats.containsKey(words[i])) {
+                wordsStats.put(words[i], new IntList());
             }
+
+            wordsStats.get(words[i]).add(i + 1);
         }
-        StringBuilder output = new StringBuilder();
 
-        statistic.forEach((key, positions) -> {
+        StringBuilder result = new StringBuilder();
+        for (String word : wordsStats.keySet()) {
+            StringBuilder stats = new StringBuilder().append(wordsStats.get(word).size());
 
-            output.append(String.format("%s %d", key, positions.size()));
-            for (Integer pos : positions) {
-                output.append(String.format(" %d", pos));
+            for (Integer i : wordsStats.get(word)) {
+                stats.append(" ").append(i);
             }
-            output.append('\n');
-        });
-        return output.toString().trim();
+
+            result.append(word).append(" ").append(stats).append("\n");
+        }
+
+        if (result.length() > 0) {
+            result.setLength(result.length() - 1);
+        }
+
+        return result.toString();
     }
 }
