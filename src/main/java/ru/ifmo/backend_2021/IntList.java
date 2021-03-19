@@ -17,8 +17,8 @@ class IntList implements Iterable<Integer> {
         this.size = 0;
     }
 
-    public boolean add(Integer value) {
-        if (capacity <= this.size) {
+    public boolean add(int value) {
+        if (this.size == this.list.length) {
             capacity *= 2;
             Integer[] copyList = new Integer[capacity];
             for (int i = 0; i < this.list.length; i++)

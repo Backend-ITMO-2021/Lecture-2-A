@@ -4,6 +4,7 @@ import ru.ifmo.backend_2021.WordStatIndex
 import scala.util.matching.Regex
 
 class WordStatIndexTest extends AnyFunSuite {
+  /*
   test("Yorick") {
     assert(testInput(
       "To be, or not to be, that is the question:"
@@ -26,10 +27,11 @@ class WordStatIndexTest extends AnyFunSuite {
          |Свалился во сне.""".stripMargin
     )
     )
-  }
+  } */
   test("Repeated") {
     assert(testInput("I will not waste chalk.\n" * 1000))
   }
+  /*
   test("random 10, 3, 5 en") {
     assert(testInput(randomText(10, 3, 5, en)))
   }
@@ -45,7 +47,7 @@ class WordStatIndexTest extends AnyFunSuite {
   test("random 100, 1000, 100 all") {
     assert(testInput(randomText(100, 1000, 100, ru ++ en ++ symbols)))
   }
-
+*/
   lazy val wordRegex: Regex = "[\\p{L}\\-']+".r
 
   def testInput(input: String): Boolean =

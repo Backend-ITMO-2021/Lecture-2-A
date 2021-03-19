@@ -1,2 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/vladislavkomsomolenko/Lecture-2-A/src/main/java/ru/ifmo/backend_2021/IntList.java:31:1: cannot assign a value to final variable capacity[0m
-[0m[[0m[31merror[0m] [0m[0mcapacity[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/vladislavkomsomolenko/Lecture-2-A/src/main/java/ru/ifmo/backend_2021/WordStatIndex.java:35:1: cannot find symbol[0m
+[0m[[0m[31merror[0m] [0m[0m  symbol:   method get(int)[0m
+[0m[[0m[31merror[0m] [0m[0m  location: variable curIds of type ru.ifmo.backend_2021.IntList[0m
+[0m[[0m[31merror[0m] [0m[0mcurIds.get[0m

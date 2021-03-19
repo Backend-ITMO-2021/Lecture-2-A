@@ -13,7 +13,7 @@ public class WordStatIndex {
         space++;
         continue;
       }
-      if (words[i].isEmpty() || words[i].isBlank()) {
+      if (words[i].isEmpty()) {
         continue;
       }
       if (wordsMap.containsKey(words[i])) {
