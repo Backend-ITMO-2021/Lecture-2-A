@@ -5,25 +5,28 @@ import java.util.*;
 class IntList implements Iterable<Integer> {
     private Integer[] list;
     private int size;
+    public static int capacity = 20;
 
-    public IntList(int size) {
-        this.list = new Integer[size];
-        this.size = size;
-    }
 
     public IntList() {
-        this.list = new Integer[50];
+        this(capacity);
+    }
+
+    public IntList(int capacity) {
+        this.list = new Integer[capacity];
+        this.size = 0;
     }
 
     public boolean add(Integer value) {
-        if (this.list.length == this.size) {
-            Integer[] copyList;
-            copyList = this.list;
-            this.list = new Integer[this.size*2];
+        if (capacity < this.size) {
+            capacity *= 2;
+            Integer[] copyList = new Integer[capacity];
+            for (int i = 0; i < this.list.length; i++)
+                copyList[i] = this.list[i];
             this.list = copyList;
         }
         list[this.size] = value;
-        this.size++;
+        this.size += 1;
         return true;
     }
 

@@ -1,4 +1,4 @@
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(WordStatIndexTest, org.scalatest.tools.Framework$$anon$1@44279724, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(WordStatIndexTest, org.scalatest.tools.Framework$$anon$1@2cd7c8f4, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mWordStatIndexTest:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- Yorick[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- Monday's Child[0m[0m
@@ -8,7 +8,7 @@
 [0m[[0m[0minfo[0m] [0m[0m[32m- random 3, 10, 10 en[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- random 10, 3, 5 ru[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- random 100, 1000, 100 all[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 3 seconds, 665 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 3 seconds, 440 milliseconds.[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 8[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 8, failed 0, canceled 0, ignored 0, pending 0[0m[0m
