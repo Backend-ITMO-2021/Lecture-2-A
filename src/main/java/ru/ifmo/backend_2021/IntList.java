@@ -5,7 +5,7 @@ import java.util.*;
 class IntList implements Iterable<Integer> {
     private Integer[] list;
     private int size;
-    public static int capacity = 20;
+    public static int capacity = 50;
 
 
     public IntList() {
