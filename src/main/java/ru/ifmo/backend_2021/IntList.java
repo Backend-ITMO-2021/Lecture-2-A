@@ -5,7 +5,7 @@ import java.util.*;
 class IntList implements Iterable<Integer> {
     private Integer[] list;
     private int size;
-    public static int capacity = 50;
+    public static int capacity = 20;
 
 
     public IntList() {
@@ -18,7 +18,7 @@ class IntList implements Iterable<Integer> {
     }
 
     public boolean add(Integer value) {
-        if (capacity < this.size) {
+        if (capacity <= this.size) {
             capacity *= 2;
             Integer[] copyList = new Integer[capacity];
             for (int i = 0; i < this.list.length; i++)
