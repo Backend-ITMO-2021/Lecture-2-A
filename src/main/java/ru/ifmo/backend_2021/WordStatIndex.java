@@ -22,8 +22,6 @@ public class WordStatIndex {
       output.append(word).append(" ").append(list.size()).append(list.toSB()).append("\n");
     });
 
-    System.out.println(output);
-
-    return output.toString();
+    return output.toString().trim();
   }
 }
