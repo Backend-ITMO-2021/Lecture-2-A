@@ -19,11 +19,7 @@ class IntList implements Iterable<Integer> {
 
     public boolean add(int value) {
         if (this.size == this.list.length) {
-            capacity *= 2;
-            Integer[] copyList = new Integer[capacity];
-            for (int i = 0; i < this.list.length; i++)
-                copyList[i] = this.list[i];
-            this.list = copyList;
+            this.list = Arrays.copyOf(this.list, this.list.length * 2);
         }
         list[this.size] = value;
         this.size += 1;

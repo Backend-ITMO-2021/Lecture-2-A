@@ -1,4 +1,14 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/vladislavkomsomolenko/Lecture-2-A/src/main/java/ru/ifmo/backend_2021/WordStatIndex.java:35:1: cannot find symbol[0m
-[0m[[0m[31merror[0m] [0m[0m  symbol:   method get(int)[0m
-[0m[[0m[31merror[0m] [0m[0m  location: variable curIds of type ru.ifmo.backend_2021.IntList[0m
-[0m[[0m[31merror[0m] [0m[0mcurIds.get[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/vladislavkomsomolenko/Lecture-2-A/src/main/java/ru/ifmo/backend_2021/IntList.java:21:1: cannot find symbol[0m
+[0m[[0m[31merror[0m] [0m[0m  symbol: variable length[0m
+[0m[[0m[31merror[0m] [0m[0mthis.length[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/vladislavkomsomolenko/Lecture-2-A/src/main/java/ru/ifmo/backend_2021/IntList.java:22:1: cannot find symbol[0m
+[0m[[0m[31merror[0m] [0m[0m  symbol: variable length[0m
+[0m[[0m[31merror[0m] [0m[0mthis.length[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/vladislavkomsomolenko/Lecture-2-A/src/main/java/ru/ifmo/backend_2021/IntList.java:23:1: cannot find symbol[0m
+[0m[[0m[31merror[0m] [0m[0m  symbol: variable length[0m
+[0m[[0m[31merror[0m] [0m[0mthis.length[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/vladislavkomsomolenko/Lecture-2-A/src/main/java/ru/ifmo/backend_2021/IntList.java:26:1: cannot find symbol[0m
+[0m[[0m[31merror[0m] [0m[0m  symbol: variable length[0m
+[0m[[0m[31merror[0m] [0m[0mthis.length[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/vladislavkomsomolenko/Lecture-2-A/src/main/java/ru/ifmo/backend_2021/IntList.java:27:1: incompatible types: int[] cannot be converted to java.lang.Integer[][0m
+[0m[[0m[31merror[0m] [0m[0mnew_list[0m
