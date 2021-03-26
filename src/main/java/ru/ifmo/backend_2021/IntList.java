@@ -1,8 +1,6 @@
 package ru.ifmo.backend_2021;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 
 class IntList implements Iterable<Integer> {
@@ -24,34 +22,38 @@ class IntList implements Iterable<Integer> {
         this.size++;
     }
 
-    protected String convertToString() {
-        String result = Arrays.toString(this.data).replaceAll(",", "");
-        return result.substring(1, result.length() - 1);
+    String convertToString() {
+        IntListIterator it = new IntListIterator();
+        StringBuilder result = new StringBuilder();
+
+        while (it.hasNext()) {
+            result.append(it.next()).append(" ");
+        }
+
+        return result.substring(0, result.length() - 1);
     }
 
     @Override
     public Iterator<Integer> iterator() {
-        return new IntListIterator(0);
+        return new IntListIterator();
     }
 
     private class IntListIterator implements Iterator<Integer> {
         private int curIndex;
 
-        IntListIterator(int index) {
-            this.curIndex = index;
+        IntListIterator() {
+            this.curIndex = 0;
         }
 
         @Override
         public boolean hasNext() {
-        return this.curIndex < size;
+            return this.curIndex < size;
         }
 
         @Override
         public Integer next() {
-            if(!this.hasNext()) {
-                throw new NoSuchElementException();
-            }
-            return curIndex++;
+            this.curIndex++;
+            return data[curIndex - 1];
         }
     }
 }
