@@ -1,1 +1,18 @@
 [debug] Running TaskDef(WordStatIndexTest, org.scalatest.tools.Framework$$anon$1@33e59786, false, [SuiteSelector])
+[info] WordStatIndexTest:
+[info] - Yorick
+[info] - Monday's Child
+[info] - Шалтай-Болтай
+[info] - Repeated
+[info] - random 10, 3, 5 en
+[info] - random 3, 10, 10 symbols
+[info] - random 3, 10, 10 en
+[info] - random 10, 3, 5 ru
+[info] - random 100, 1000, 100 all
+[info] Run completed in 13 minutes, 29 seconds.
+[info] Total number of tests run: 9
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 9, failed 0, canceled 0, ignored 0, pending 0
+[info] All tests passed.
+[debug] Passed tests:
+[debug] 	WordStatIndexTest
